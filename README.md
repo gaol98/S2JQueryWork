@@ -13,7 +13,7 @@
 > * git pull (git pull origin master)
 
 ### 操作提示（谨慎操作）
-> * 第一步：查看当前的git仓库状态，可以使用git status
+> * 第一步：查看当前的git仓库状态，可以使用
     git status
     
 > * 第二步：更新全部
