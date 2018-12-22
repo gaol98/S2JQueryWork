@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>制作12进制的时钟特效</title>
+</head>
+<body>
+<div id="div1">
+</div>
+<script>
+    function clock_12()
+    {
+        var today=new Date();
+        var year=today.getFullYear();
+        var mouth=today.getMonth();
+        var day=today.getDate();
+        var hh=today.getHours();
+        var mm=today.getMinutes();
+        var ss=today.getSeconds();
+        var dayy=today.getDay();
+        var days=new Array("星期日","星期一","星期二","星期三","星期四","星期五","星期六");
+        var am="AM";
+        if(hh>12)
+        {
+            am="PM";
+        }
+        else
+        {
+            am="AM";
+        }
+        document.getElementById("div1").innerHTML="你好，欢迎访问贵美商城<br>" +
+                "<br>" +
+                year+"年"+mouth+"月"+day+"日&nbsp;&nbsp;"+hh+":"+mm+":"+ss+"&nbsp;&nbsp;"+am+"&nbsp;&nbsp;"+days[dayy];
+    }
+    var mytime=setInterval("clock_12()",1000);
+</script>
+</body>
+</html>

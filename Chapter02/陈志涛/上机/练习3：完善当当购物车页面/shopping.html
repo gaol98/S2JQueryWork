@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>完善当当购物车页面</title>
+    <link type="text/css" rel="stylesheet" href="css/cartStyle.css" />
+</head>
+<body>
+
+<div class="content">
+    <div class="logo">
+        <img src="images/dd_logo.jpg"><span>关闭</span>
+    </div>
+    <div class="cartList">
+        <ul>
+            <li>
+                <input type="text" name="price" value="21.90">
+            </li>
+            <li>
+                <input type="button" name="minus" value="-" onclick="plus_1(0)">
+                <input type="text" name="amount" value="1">
+                <input type="button" name="plus" value="+" onclick="plus(0)">
+            </li>
+            <li id="price0">¥21.90</li>
+            <li><p>移入收藏</p><p>删除</p></li>
+        </ul>
+        <ul>
+            <li>¥<input type="text" name="price" value="24.00"></li>
+            <li>
+                <input type="button" name="minus" value="-" onclick="plus_1(1)">
+                <input type="text" name="amount" value="1">
+                <input type="button" name="plus" value="+" onclick="plus(1)">
+            </li>
+            <li id="price1">¥24.00</li>
+            <li><p>移入收藏</p><p>删除</p></li>
+        </ul>
+        <ol>
+            <li id="totalPrice">&nbsp;</li>
+            <li><span>结 算</span></li>
+        </ol>
+    </div>
+</div>
+<script>
+    function plus(num)
+    {
+        var prices=document.getElementsByName("price")[num].value;
+        var count=parseInt(document.getElementsByName("amount")[num].value)+1;
+        document.getElementsByName("amount")[num].value=count;
+        var totals=parseFloat(prices*count);
+        document.getElementById("price"+num).innerHTML="$"+totals;
+        total();
+    }
+    function plus_1(num)
+    {
+        var prices=document.getElementsByName("price")[num].value;
+        var count=parseInt(document.getElementsByName("amount")[num].value)-1;
+        if(count<1)
+        {
+            alert("不能再减了，再减就没有啦！")
+        }
+        else
+        {
+            document.getElementsByName("amount")[num].value=count;
+            var totals=parseFloat(prices*count);
+            document.getElementById("price"+num).innerHTML="$"+totals;
+            total();
+        }
+    }
+    function total()
+    {
+        var prices=document.getElementsByName("price");
+        var count=document.getElementsByName("amount");
+        var sum=0;
+        for(var i=0;i<prices.length;i++)
+        {
+            sum += prices[i].value * count[i].value;
+        }
+        document.getElementById("totalPrice").innerHTML="$"+sum;
+    }
+</script>
+</body>
+</html>
